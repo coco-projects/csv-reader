@@ -20,9 +20,11 @@
             'region',
         ]);
 
+        $reader->seek(3);
+
         $data = $reader->readAll();
 
-        var_export($reader->getHeader());
+        print_r($reader->getHeader());
 
         print_r($data);
 

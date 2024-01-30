@@ -76,6 +76,13 @@ class Reader extends AbstractCsv
         return $out;
     }
 
+    public function seek($offset): static
+    {
+        for ($i = 0; (($this->readLine()) !== false) && $i < $offset; $i++) {}
+
+        return $this;
+    }
+
     /**
      * Wrapper for fgetcsv function
      *
