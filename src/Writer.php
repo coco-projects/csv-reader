@@ -84,8 +84,8 @@ class Writer extends AbstractCsv
     private function write(array $row): bool|int
     {
         if ($this->encodingFrom !== null && $this->encodingTo !== null) {
-            foreach ($row as $k => $v) {
-                $row[$k] = iconv($this->encodingFrom, $this->encodingTo, $v);
+            foreach ($row as $k => &$v) {
+                $v = mb_convert_encoding($v, $this->encodingTo, $this->encodingFrom);
             }
         }
 

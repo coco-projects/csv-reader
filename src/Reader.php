@@ -97,8 +97,8 @@ class Reader extends AbstractCsv
         }
 
         if ($this->encodingFrom !== null && $this->encodingTo !== null) {
-            foreach ($out as $k => $v) {
-                $out[$k] = mb_convert_encoding($v, $this->encodingTo, $this->encodingFrom);
+            foreach ($out as $k => &$v) {
+                $v = mb_convert_encoding($v, $this->encodingTo, $this->encodingFrom);
             }
         }
 
